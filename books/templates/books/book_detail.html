@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static  %}
+{% load widget_tweaks %}
 {% block title %} {{ book.title }} {% endblock %}
 
 {% block content %}
@@ -139,29 +140,22 @@
                                 <div class="mt-4">
                                                                 <h5 class="font-size-16 mb-3">Leave a Message</h5>
 
-                                                                <form>
-                                                                    <div class="p-3">
-                                                    <h5 class="font-size-14 mb-3">Default</h5>
-                                                    <input type="number" id="range_01">
-                                                </div>
+                                                                <form method="post" action="{% url 'books:reviews' book.slug %}">
+                                                                    {% csrf_token %}
                                                                     <div class="row">
                                                                         <div class="col-md-6">
                                                                             <div class="mb-3">
-                                                                                <label for="commentname-input" class="form-label">Name</label>
-                                                                                <input type="text" class="form-control" id="commentname-input" placeholder="Enter name">
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <div class="mb-3">
-                                                                                <label for="commentemail-input" class="form-label">Email</label>
-                                                                                <input type="email" class="form-control" id="commentemail-input" placeholder="Enter email">
+                                                                                <label for="stars_given" class="form-label">Stars</label>
+<!--                                                                                <input type="number" class="form-control" id="stars_given">-->
+                                                                                {% render_field form.stars_given class+="form-control" id="stars_given" type="number" %}
                                                                             </div>
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="mb-3">
                                                                         <label for="commentmessage-input" class="form-label">Message</label>
-                                                                        <textarea class="form-control" id="commentmessage-input" placeholder="Your message..." rows="3"></textarea>
+<!--                                                                        <textarea class="form-control" id="commentmessage-input" placeholder="Your message..." rows="3"></textarea>-->
+                                                                        {% render_field form.text class+="form-control" id="commentmessage-input" type="number" rows="3" placeholder="Your message..." %}
                                                                     </div>
 
                                                                     <div class="text-end">

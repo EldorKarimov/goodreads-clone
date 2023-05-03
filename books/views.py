@@ -2,6 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.views import View
+from django.core.paginator import Paginator
 
 from .models import Book, Comment, Genre
 from .forms import AddCommentForm
@@ -13,16 +14,25 @@ class BookListView(View):
 
         if search_book_title:
             books = Book.objects.filter(title__icontains = search_book_title)
+            paginator = Paginator(books, 4)
+            page_num = request.GET.get('page', 1)
+            page_obj = paginator.get_page(page_num)
         else:
-            books = Book.objects.all()
+            books = Book.objects.all().order_by('-id')
+            paginator = Paginator(books, 4)
+            page_num = request.GET.get('page', 1)
+            page_obj = paginator.get_page(page_num)
         if search_genre_book:
             popular_books = Book.objects.filter(title__icontains = search_genre_book).order_by("-views")[:3]
             genres = Genre.objects.filter(name__icontains = search_genre_book)
         else:
             popular_books = Book.objects.all().order_by("-views")[:3]
             genres = Genre.objects.all()
+        
+
+
         context = {
-            'books':books,
+            'books':page_obj,
             'popular_books':popular_books,
             'genres':genres,
             'search_book_title':search_book_title,
