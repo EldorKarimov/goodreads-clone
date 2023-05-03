@@ -1,0 +1,290 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Books List {% endblock %}
+
+{% block content %}
+<div class="main-content container" style="margin-top:0px;">
+
+    <div class="page-content">
+        <div class="container-fluid">
+
+
+            <div class="row">
+                <div class="col-xl-9 col-lg-8">
+                    <div class="card">
+                        <!-- Nav tabs -->
+
+
+                        <!-- Tab panes -->
+                        <div class="tab-content p-4">
+                            <div class="tab-pane active" id="all-post" role="tabpanel">
+                                <div>
+                                    <div class="row justify-content-center">
+                                        <div class="col-xl-8">
+                                            <div>
+
+                                                <!-- end row -->
+
+                                                <hr class="mb-4">
+
+                                                <div class="row">
+                                                    {% for book in books %}
+                                                    <div class="col-sm-6">
+                                                        <div class="card p-1 border shadow-none">
+                                                            <div class="p-3">
+                                                                <h5><a href="{% url 'books:book_detail' book.slug %}" class="text-dark">{{ book.title | slice:":20" }}...</a></h5>
+                                                                <p class="text-muted mb-0">Date: {{ book.publish_time | date:"Y-m-d"}}</p>
+                                                            </div>
+
+                                                            <div class="position-relative">
+                                                                <img src="{{ book.image.url }}" alt="image"
+                                                                     class="img-thumbnail">
+                                                            </div>
+
+                                                            <div class="p-3">
+                                                                <ul class="list-inline">
+                                                                    <li class="list-inline-item me-3">
+                                                                        <!--                                                                                    <a href="javascript: void(0);" class="text-muted">-->
+                                                                        <!--                                                                                        <i class="bx bx-purchase-tag-alt align-middle text-muted me-1"></i> Project-->
+                                                                        <!--                                                                                    </a>-->
+                                                                    </li>
+                                                                    <li class="list-inline-item me-3">
+                                                                        <a href="javascript: void(0);"
+                                                                           class="text-muted">
+                                                                            <i class="bx bx-comment-dots align-middle text-muted me-1"></i>
+                                                                            12 Comments
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                                <p>{{ book.description | slice:":100"}}...</p>
+
+                                                                <div>
+                                                                    <a href="{% url 'books:book_detail' book.slug %}"
+                                                                       class="text-primary">Read more <i
+                                                                            class="mdi mdi-arrow-right"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %}
+
+                                                </div>
+
+
+                                                <hr class="my-4">
+
+                                                <div class="text-center">
+                                                    <ul class="pagination justify-content-center pagination-rounded">
+                                                        <li class="page-item disabled">
+                                                            <a href="javascript: void(0);" class="page-link"><i
+                                                                    class="mdi mdi-chevron-left"></i></a>
+                                                        </li>
+                                                        <li class="page-item">
+                                                            <a href="javascript: void(0);" class="page-link">1</a>
+                                                        </li>
+                                                        <li class="page-item active">
+                                                            <a href="javascript: void(0);" class="page-link">2</a>
+                                                        </li>
+                                                        <li class="page-item">
+                                                            <a href="javascript: void(0);" class="page-link">3</a>
+                                                        </li>
+                                                        <li class="page-item">
+                                                            <a href="javascript: void(0);" class="page-link">...</a>
+                                                        </li>
+                                                        <li class="page-item">
+                                                            <a href="javascript: void(0);" class="page-link">10</a>
+                                                        </li>
+                                                        <li class="page-item">
+                                                            <a href="javascript: void(0);" class="page-link"><i
+                                                                    class="mdi mdi-chevron-right"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane" id="archive" role="tabpanel">
+                                <div>
+                                    <div class="row justify-content-center">
+                                        <div class="col-xl-8">
+                                            <h5>Archive</h5>
+
+                                            <div class="mt-5">
+                                                <div class="d-flex flex-wrap">
+                                                    <div class="me-2">
+                                                        <h4>2020</h4>
+                                                    </div>
+                                                    <div class="ms-auto">
+                                                        <span class="badge badge-soft-success badge-pill float-end ms-1 font-size-12">03</span>
+                                                    </div>
+                                                </div>
+                                                <hr class="mt-2">
+
+                                                <div class="list-group list-group-flush">
+                                                    <a href="blog-details.html" class="list-group-item text-muted"><i
+                                                            class="mdi mdi-circle-medium me-1"></i> Beautiful Day with
+                                                        Friends</a>
+
+                                                    <a href="blog-details.html" class="list-group-item text-muted"><i
+                                                            class="mdi mdi-circle-medium me-1"></i> Drawing a sketch</a>
+
+                                                    <a href="blog-details.html" class="list-group-item text-muted"><i
+                                                            class="mdi mdi-circle-medium me-1"></i> Project discussion
+                                                        with team</a>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="mt-5">
+                                                <div class="d-flex flex-wrap">
+                                                    <div class="me-2">
+                                                        <h4>2019</h4>
+                                                    </div>
+                                                    <div class="ms-auto">
+                                                        <span class="badge badge-soft-success badge-pill float-end ms-1 font-size-12">06</span>
+                                                    </div>
+                                                </div>
+                                                <hr class="mt-2">
+
+                                                <div class="list-group list-group-flush">
+                                                    <a href="blog-details.html" class="list-group-item text-muted"><i
+                                                            class="mdi mdi-circle-medium me-1"></i> Coffee with Friends</a>
+
+                                                    <a href="blog-details.html" class="list-group-item text-muted"><i
+                                                            class="mdi mdi-circle-medium me-1"></i> Neque porro quisquam
+                                                        est</a>
+
+                                                    <a href="blog-details.html" class="list-group-item text-muted"><i
+                                                            class="mdi mdi-circle-medium me-1"></i> Quis autem vel eum
+                                                        iure</a>
+
+                                                    <a href="blog-details.html" class="list-group-item text-muted"><i
+                                                            class="mdi mdi-circle-medium me-1"></i> Cras mi eu
+                                                        turpis</a>
+
+                                                    <a href="blog-details.html" class="list-group-item text-muted"><i
+                                                            class="mdi mdi-circle-medium me-1"></i> Drawing a sketch</a>
+
+                                                    <a href="blog-details.html" class="list-group-item text-muted"><i
+                                                            class="mdi mdi-circle-medium me-1"></i> Project discussion
+                                                        with team</a>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="mt-5">
+                                                <div class="d-flex flex-wrap">
+                                                    <div class="me-2">
+                                                        <h4>2018</h4>
+                                                    </div>
+                                                    <div class="ms-auto">
+                                                        <span class="badge badge-soft-success badge-pill float-end ms-1 font-size-12">03</span>
+                                                    </div>
+                                                </div>
+                                                <hr class="mt-2">
+
+                                                <div class="list-group list-group-flush">
+                                                    <a href="blog-details.html" class="list-group-item text-muted"><i
+                                                            class="mdi mdi-circle-medium me-1"></i> Beautiful Day with
+                                                        Friends</a>
+
+                                                    <a href="blog-details.html" class="list-group-item text-muted"><i
+                                                            class="mdi mdi-circle-medium me-1"></i> Drawing a sketch</a>
+
+                                                    <a href="blog-details.html" class="list-group-item text-muted"><i
+                                                            class="mdi mdi-circle-medium me-1"></i> Project discussion
+                                                        with team</a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-4">
+                    <div class="card">
+                        <div class="card-body p-4">
+                            <div class="search-box">
+                                <p class="text-muted">Search</p>
+                                <div class="position-relative">
+                                    <input type="text" class="form-control rounded bg-light border-light"
+                                           placeholder="Search...">
+                                    <i class="mdi mdi-magnify search-icon"></i>
+                                </div>
+                            </div>
+
+
+                            <hr class="my-4">
+
+                            <div>
+                                <p class="text-muted mb-2">Popular Books</p>
+
+                                <div class="list-group list-group-flush">
+                                    {% for pb in popular_books %}
+                                    <a href="{% url 'books:book_detail' pb.slug %}" class="list-group-item text-muted py-3 px-2">
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-shrink-0 me-3">
+                                                <img src="{{ pb.image.url  }}" alt=""
+                                                     class="avatar-md h-auto d-block rounded">
+                                            </div>
+                                            <div class="flex-grow-1 overflow-hidden">
+                                                <h5 class="font-size-13 text-truncate">{{ pb.title }}</h5>
+                                                <p class="mb-0 text-truncate">{{ pb.publish_time | date}}</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+
+                            <hr class="my-4">
+
+                            <div>
+                                <p class="text-muted">Genres</p>
+
+                                <div class="d-flex flex-wrap gap-2 widget-tag">
+                                    {% for genre in genres %}
+                                    <div><a href="{% url 'books:genre' genre.slug %}" class="badge bg-light font-size-12">{{ genre.name }}</a>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end card -->
+                </div>
+            </div>
+            <!-- end row -->
+
+        </div> <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+
+
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <script>document.write(new Date().getFullYear())</script>
+                    © Skote.
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-sm-end d-none d-sm-block">
+                        Design & Develop by Themesbrand
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+{% endblock %}

@@ -1,0 +1,70 @@
+
+<!doctype html>
+<html lang="en">
+
+
+<!-- Mirrored from themesbrand.com/skote-django/layouts/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 29 Oct 2022 08:26:41 GMT -->
+<head>
+
+    <meta charset="utf-8"/>
+    <title>{% block title %} {% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description"/>
+    <meta content="Themesbrand" name="author"/>
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <!-- Bootstrap Css -->
+    {% load static %}
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" id="bootstrap-style" rel="stylesheet" type="text/css"/>
+    <!-- Icons Css -->
+    <link href="{% static 'assets/css/icons.min.css' %}" rel="stylesheet" type="text/css"/>
+    <!-- App Css-->
+    <link href="{% static 'assets/css/app.min.css' %}" id="app-style" rel="stylesheet" type="text/css"/>
+
+</head>
+
+<body data-sidebar="dark" data-layout-mode="light">
+
+<!-- <body data-layout="horizontal" data-topbar="dark"> -->
+
+<!-- Begin page -->
+<div id="layout-wrapper container">
+    {% include 'header.html' %}
+
+    <!-- ========== Left Sidebar Start ========== -->
+
+    <!-- Left Sidebar End -->
+
+
+    {% block content %}
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    {% endblock %}
+</div>
+<!-- END layout-wrapper -->
+
+<!-- Right bar overlay-->
+<div class="rightbar-overlay"></div>
+
+<!-- JAVASCRIPT -->
+<script src="{% static 'assets/libs/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'assets/libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/libs/metismenu/metisMenu.min.js' %}"></script>
+<script src="{% static 'assets/libs/simplebar/simplebar.min.js' %}"></script>
+<script src="{% static 'assets/libs/node-waves/waves.min.js' %}"></script>
+
+<!-- apexcharts -->
+<script src="{% static 'assets/libs/apexcharts/apexcharts.min.js' %}"></script>
+
+<!-- dashboard init -->
+<script src="{% static 'assets/js/pages/dashboard.init.js' %}"></script>
+
+<!-- App js -->
+<script src="{% static 'assets/js/app.js' %}"></script>
+</body>
+
+
+<!-- Mirrored from themesbrand.com/skote-django/layouts/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 29 Oct 2022 08:28:02 GMT -->
+</html>
