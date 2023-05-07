@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.views import View
@@ -42,15 +43,19 @@ class BookListView(View):
 
 class BookDetailView(View):
     def get(self, request, slug):
-        form = AddCommentForm()
-        book = get_object_or_404(Book, slug = slug)
-        context = {
-            'book':book,
-            'form':form
-        }
-        book.views += 1
-        book.save()
-        return render(request, 'books/book_detail.html', context)
+        try:
+            form = AddCommentForm()
+            book = Book.objects.get(slug = slug)
+            context = {
+                'book':book,
+                'form':form
+            }
+            book.views += 1
+            book.save()
+            return render(request, 'books/book_detail.html', context)
+        except ObjectDoesNotExist:
+            return render(request, 'not_found.html')
+
 
 class AddCommentView(LoginRequiredMixin, View):
     def post(self, request, slug):
@@ -80,25 +85,5 @@ class GenreView(View):
             'genres':genres,
         }
         return render(request, 'books/genre.html', context)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

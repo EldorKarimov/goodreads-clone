@@ -135,7 +135,7 @@
                             </div>
                             <!-- end Specifications -->
 
-                            {% if book.comment_set.all %}
+
                             <div class="mt-5">
                                 <div class="mt-4">
                                                                 <h5 class="font-size-16 mb-3">Leave a Message</h5>
@@ -170,6 +170,7 @@
 
                                                                 </form>
                                                             </div>
+                                {% if book.comment_set.all %}
 
                                 <h5 class="font-size-15"><i class="bx bx-message-dots text-muted align-middle me-1"></i>
                                     Comments :</h5>
@@ -195,8 +196,9 @@
                                     </div>
                                     {% endfor %}
                                 </div>
+                                {% endif %}
                             </div>
-                            {% endif %}
+
 
                         </div>
                     </div>
